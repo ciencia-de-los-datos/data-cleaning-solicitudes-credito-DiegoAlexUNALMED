@@ -35,6 +35,7 @@ def clean_data():
     df.barrio = df.barrio.str.replace("_"," ")
     df.barrio = df.barrio.str.replace("-"," ")
     df.barrio = df.barrio.str.replace('santo domingo savio ','santo domingo savio')
+    df.barrio = df.barrio.str.replace('cabecera san antonio ','cabecera san antonio')
 
     df.monto_del_credito = df.monto_del_credito.str.strip("$")
     df.monto_del_credito = df.monto_del_credito.str.strip()
@@ -49,6 +50,11 @@ def clean_data():
     df.fecha_de_beneficio = df.fecha_de_beneficio.map(lambda x: x[5:9]+"/"+x[2:4]+"/"+ x[0] if x[1] == "/" else x)
     df.fecha_de_beneficio = df.fecha_de_beneficio.map(lambda x: x[6:10]+"/"+x[3:5]+"/"+ x[0:2] if x[2] == "/" else x)
     df.fecha_de_beneficio = pd.to_datetime(df.fecha_de_beneficio,infer_datetime_format = True, errors = "coerce")
+
+    df.index = range(len(df))
+    df.at[9332,'barrio'] = "barrio cristobal"
+    df.at[155,'barrio'] = "playon de los"
+    df.at[2664,'barrio'] = "playon de los"
 
     df = df[~df.duplicated()]
 
