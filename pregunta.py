@@ -52,7 +52,7 @@ def clean_data():
     df.fecha_de_beneficio = pd.to_datetime(df.fecha_de_beneficio,infer_datetime_format = True, errors = "coerce")
 
     df.index = range(len(df))
-    df.at[9332,'barrio'] = "barrio cristobal"
+    df.at[1888,'barrio'] = "barrio cristobal"
     df.at[155,'barrio'] = "playon de los"
     df.at[2664,'barrio'] = "playon de los"
 
